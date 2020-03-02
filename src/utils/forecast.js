@@ -34,9 +34,19 @@ const forecast = (latitude, longitude, units, callback) => {
       }
     } else {
       callback(undefined, {
-        dailySummary: body.daily.data[0].summary,
-        currentTemperatue: body.currently.temperature,
-        currentPrecipProbability: body.currently.precipProbability
+        dailyForecast:
+          body.daily.data[0].summary +
+          " It is currently " +
+          Math.round(parseFloat(body.currently.temperature)) +
+          " degress out. There is a " +
+          parseFloat(body.currently.precipProbability, 10) * 100 +
+          "% chance of rain.",
+        todayHighLow:
+          "Today's high is " +
+          Math.round(parseFloat(body.daily.data[0].temperatureHigh)) +
+          " degress and " +
+          Math.round(parseFloat(body.daily.data[0].temperatureLow)) +
+          " degress low."
       });
     }
   });
