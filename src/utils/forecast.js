@@ -39,7 +39,7 @@ const forecast = (latitude, longitude, units, callback) => {
           " It is currently " +
           Math.round(parseFloat(body.currently.temperature)) +
           " degress out. There is a " +
-          parseFloat(body.currently.precipProbability, 10) * 100 +
+          Math.round(parseFloat(body.currently.precipProbability, 10) * 100) +
           "% chance of rain.",
         todayHighLow:
           "Today's high is " +
